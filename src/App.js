@@ -6,6 +6,7 @@ import Day from './component/Day';
 import DayList from './component/DayList';
 import {BrowserRouter,Route,Switch} from "react-router-dom"
 import EmptyPage from './component/EmptyPage';
+import CreateWord from './component/CreateWord';
 function App() {
   return (
     <BrowserRouter>
@@ -14,7 +15,7 @@ function App() {
         <Switch>
           <Route exact path="/"><DayList /></Route>
           <Route exact path="/day/:day"><Day /></Route>
-          
+          <Route path="/create_word"><CreateWord /></Route>
           <Route>
             <EmptyPage />
           </Route>
