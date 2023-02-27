@@ -9,9 +9,9 @@ function Header(){
         <Link to="/create_word" className="link">
           단어추가
         </Link>
-        <a href="#x" className="link">
+        <Link to="/create_day" className="link">
           Day 추가
-        </a>
+        </Link>
       </div>
     </div>
   )

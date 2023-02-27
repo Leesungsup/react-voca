@@ -2,7 +2,9 @@ import dummy from "../db/data.json";
 import {Link} from "react-router-dom"
 import {useEffect,useState} from "react";
 import useFetch from "../hooks/useFetch";
+import Axios from "axios";
 function DayList(){
+  const [Days,setDays] = useState(0);
   // const  [count,setCount] = useState(0);
   // const [days,setDays] = useState([]);
   // function onClick(){
@@ -18,7 +20,12 @@ function DayList(){
   //   ])
   // }
 
-  const days=useFetch("http://localhost:3001/days")
+  // const days=useFetch("http://localhost:3001/days");
+  Axios.get("/day/getday").then((response)=>{
+    if(response.data.success){
+      setDays(response.data.result);
+    }
+  });
   // useEffect(()=>{
   //   fetch("http://localhost:3001/days").then(res=>{
   //     return res.json();
@@ -27,13 +34,13 @@ function DayList(){
   //   });
   // },[]);
 
-  if(days.length===0){
+  if(Days.length===0){
     return <span>Loading.....</span>
   }
   return(
     <div>
       <ul className="list_day">
-        {days.map(day=>(
+        {Days.map(day=>(
           <li key={day.id}>
             <Link to={`/day/${day.day}`}>Day {day.day}</Link>
             </li>

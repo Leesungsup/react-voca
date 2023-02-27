@@ -1,11 +1,11 @@
 import React, { useState,useRef } from "react";
 import Axios from 'axios';
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
 function CreateWord(){
 
   const [isLoading, setIsLoading] = useState(false);
-  const history = useHistory();
+  const navigate = useNavigate();
   const engRef = useRef(null);
   const korRef = useRef(null);
   const dayRef = useRef(null);
@@ -23,7 +23,7 @@ function CreateWord(){
     .then(response=>{
       if(response.data.success){
           console.log(response.data)
-          history.push(`/day/${day}`);
+          navigate(`/day/${day}`);
           setIsLoading(false);
       }else{
           alert("영화 정보를 가져오는데 실패 했습니다.")
